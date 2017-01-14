@@ -31,6 +31,8 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -59,6 +61,13 @@ let g:airline_theme='simple'
 
 colorscheme gruvbox
 set background=dark
+
+set filetype=vimrc
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\     'extends' : 'jsx',
+\  },
+\}
 
 " Default Whitespace
 set tabstop=2
@@ -127,9 +136,9 @@ let g:tern_show_argument_hints='on_hold'
 set t_Co=256
 " Making cursor a bar in insert mode
 if exists('$TMUX')
-   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
