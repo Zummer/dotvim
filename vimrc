@@ -62,12 +62,7 @@ let g:airline_theme='simple'
 colorscheme gruvbox
 set background=dark
 
-set filetype=vimrc
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\     'extends' : 'jsx',
-\  },
-\}
+let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx',  }, }
 
 " Default Whitespace
 set tabstop=2
