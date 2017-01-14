@@ -3,7 +3,7 @@
 //создадим символические ссылки
 
 ```
-cd~
+cd ~
 ln -s dotvim/vimrc .vimrc
 ln -s dotvim .vim
 ```
