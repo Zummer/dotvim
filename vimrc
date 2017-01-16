@@ -33,6 +33,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -116,7 +117,7 @@ set history=1000
 " Better ESc
 inoremap <C-F> <ESC>
 inoremap <C-c> <ESC>
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
