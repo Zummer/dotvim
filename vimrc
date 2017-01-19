@@ -65,6 +65,7 @@ colorscheme gruvbox
 set background=dark
 
 let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx',  }, }
+let g:ctrlp_custom_ignore = 'node_modules\|git'
 let g:ycm_autoclose_preview_window_after_insertion= 1
 
 " Default Whitespace
