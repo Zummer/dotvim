@@ -59,6 +59,7 @@ syntax on
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='simple'
+let g:ctrlp_working_path_mode = 'ra'
 
 colorscheme gruvbox
 set background=dark
