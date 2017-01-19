@@ -64,6 +64,7 @@ colorscheme gruvbox
 set background=dark
 
 let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx',  }, }
+let g:ycm_autoclose_preview_window_after_insertion= 1
 
 " Default Whitespace
 set tabstop=2
@@ -72,7 +73,7 @@ set softtabstop=2
 set expandtab
 
 " Wrapping text by default
-set wrap
+set nowrap
 set linebreak
 
 " Searching and highlights
