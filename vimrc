@@ -34,6 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
+"Plug 'Yggdroot/indentLine'
 
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -65,8 +66,10 @@ colorscheme gruvbox
 set background=dark
 
 let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx',  }, }
+
 let g:ctrlp_custom_ignore = 'node_modules$\|.git$\'
 let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_insertion= 1
 
 " Default Whitespace
 set tabstop=2
@@ -75,7 +78,7 @@ set softtabstop=2
 set expandtab
 
 " Wrapping text by default
-set wrap
+set nowrap
 set linebreak
 
 " Searching and highlights
@@ -114,6 +117,57 @@ set hidden
 
 set history=1000
 
+" create/open file in current folder
+map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+
+" =============================================================
+"                    AUTOCOMMANDS
+" =============================================================
+
+if has("autocmd")
+  augroup vimrcEx
+    au!
+
+    autocmd BufRead *
+          \ if line("'\"") > 0 && line("'\"") <= line("$") |
+          \   exe "normal g`\"" |
+          \ endif
+
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+    autocmd BufRead,BufNewFile *.asc setfiletype asciidoc
+
+    au BufNewFile,BufReadPost *.md set filetype=markdown
+  augroup END
+endif
+
+" =============================================================
+"                      CUSTOM FUNCTIONS
+" =============================================================
+
+" Create folders on file save
+" ===========================
+
+function! s:MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction
+
+" Remove whitespaces on save saving cursor position
+" =================================================
+
+function! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
 " ===================================================================
 "                          MAPPINGS
 " ===================================================================
@@ -121,6 +175,9 @@ set history=1000
 inoremap <C-F> <ESC>
 inoremap <C-c> <ESC>
 map <C-t> :NERDTreeToggle<CR>
+
+" insert mode
+imap <c-e> <esc>A
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
