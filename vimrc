@@ -34,6 +34,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'mreinhardt/greplace.vim'
+
+"Plug 'skwp/greplace.vim'
+"Plug 'yegappan/greplace'
 "Plug 'Yggdroot/indentLine'
 
 " Any valid git URL is allowed
@@ -67,6 +72,8 @@ set background=dark
 
 let g:user_emmet_settings = { 'javascript.jsx' : { 'extends' : 'jsx',  }, }
 let g:ctrlp_custom_ignore = 'node_modules\|git'
+set wildignore+=**/bower_components/*,**/node_modules/*,**/tmp/*,**/assets/images/*,**/assets/fonts/*,**/public/images/*
+
 let g:ycm_autoclose_preview_window_after_insertion= 1
 
 " Default Whitespace
@@ -117,6 +124,8 @@ set history=1000
 
 " create/open file in current folder
 map <Leader>ee :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+
+cnoremap %% <C-R>=expand("%:p:h") . "/" <CR>
 
 " =============================================================
 "                    AUTOCOMMANDS
